@@ -37,6 +37,7 @@ source 'https://rubygems.org' do
   gem 'kaminari'
   gem 'net-sftp'
   gem 'notifications-ruby-client'
+  gem 'oauth2'
   gem 'oj'
   gem 'pg'
   gem 'plek'

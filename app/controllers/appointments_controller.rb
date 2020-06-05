@@ -98,6 +98,7 @@ class AppointmentsController < ApplicationController
 
   def send_notifications(appointment)
     AdjustmentNotificationsJob.perform_later(appointment) if appointment.adjustments?
+    PushCasebookAppointmentJob.perform_later(appointment)
     CustomerUpdateJob.perform_later(appointment, CustomerUpdateActivity::CONFIRMED_MESSAGE)
     AppointmentCreatedNotificationsJob.perform_later(appointment)
     PrintedThirdPartyConsentFormJob.perform_later(appointment)

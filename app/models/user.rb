@@ -44,6 +44,10 @@ class User < ApplicationRecord
       .unexcluded
   end
 
+  def cita?
+    Provider.cita?(organisation_content_id)
+  end
+
   def tp?
     organisation_content_id == Provider::TP.id
   end

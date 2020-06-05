@@ -524,6 +524,7 @@ DEPENDENCIES
   lograge!
   net-sftp!
   notifications-ruby-client!
+  oauth2!
   oj!
   parallel_tests!
   pg!
