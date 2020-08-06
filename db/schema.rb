@@ -213,6 +213,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_093604) do
     t.integer "position", default: 0, null: false
     t.boolean "active", default: true, null: false
     t.integer "casebook_guider_id"
+    t.integer "casebook_location_id"
     t.index ["permissions"], name: "index_users_on_permissions", using: :gin
   end
 
