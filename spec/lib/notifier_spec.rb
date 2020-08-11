@@ -99,6 +99,12 @@ RSpec.describe Notifier, '#call' do
 
       subject.call
     end
+
+    it 'enqueues a casebook cancellation job' do
+      expect(CancelCasebookAppointmentJob).to receive(:perform_later).with(appointment)
+
+      subject.call
+    end
   end
 
   context 'and I mark the appointment missed' do

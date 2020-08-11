@@ -9,9 +9,14 @@ class Notifier
     notify_customer
     notify_guiders
     notify_resource_managers
+    notify_casebook
   end
 
   private
+
+  def notify_casebook
+    CancelCasebookAppointmentJob.perform_later(appointment) if appointment_cancelled?
+  end
 
   def notify_resource_managers
     if appointment_cancelled?
