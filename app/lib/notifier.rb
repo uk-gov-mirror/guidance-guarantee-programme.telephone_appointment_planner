@@ -15,7 +15,11 @@ class Notifier
   private
 
   def notify_casebook
-    CancelCasebookAppointmentJob.perform_later(appointment) if appointment_cancelled?
+    if appointment_cancelled?
+      CancelCasebookAppointmentJob.perform_later(appointment)
+    elsif appointment_rescheduled?
+      RescheduleCasebookAppointmentJob.perform_later(appointment)
+    end
   end
 
   def notify_resource_managers
